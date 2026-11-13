@@ -1,2 +1,1 @@
-// Mongoose model placeholder for a student registering for an event.
-// The schema and model will be added in a later stage.
+const mongoose=require('mongoose');const schema=new mongoose.Schema({event:{type:mongoose.Schema.Types.ObjectId,ref:'Event',required:true},student:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true}},{timestamps:true});schema.index({event:1,student:1},{unique:true});schema.index({student:1,createdAt:-1});module.exports=mongoose.model('EventRegistration',schema);
