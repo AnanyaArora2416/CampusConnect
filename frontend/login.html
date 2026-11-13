@@ -10,37 +10,33 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/login.css">
 
-  <script src="js/auth.js" defer></script>
+  <script src="js/config.js" defer></script>
+<script src="js/auth.js" defer></script>
   <script src="js/login.js" defer></script>
 </head>
 <body class="login-page">
 
   <div class="login-layout">
 
-    <!-- Navigation -->
+    
     <header class="login-navbar">
       <a href="index.html" class="login-logo">
         <span class="logo-icon">✉</span>
         <span>Campus<span class="brand-accent">Connect</span></span>
       </a>
 
-      <!-- <nav class="login-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="index.html#features">Events</a>
-        <a href="index.html#features">Assignments</a>
-        <a href="index.html#features">About</a>
-      </nav> -->
+      
 
       <a href="register.html" class="register-link">Register</a>
     </header>
 
     <main class="login-main">
 
-      <!-- Left illustration section -->
+      
       <section class="campus-panel" aria-label="CampusConnect introduction">
 
         <div class="campus-image">
-          <!-- We will insert our Figma illustration here -->
+          
         </div>
 
         <span class="campus-status">
@@ -53,20 +49,15 @@
         </span>
 
         <div class="campus-content">
-          <!-- <span class="student-count">
-            10,000+ Students Connected
-          </span> -->
+          
 
           <h1>Connect. Learn. Grow.</h1>
 
-          <!-- <p>
-            Your all-in-one hub for campus events,
-            assignments, and student community life.
-          </p> -->
+          
         </div>
       </section>
 
-      <!-- Right login form -->
+      
       <section class="login-card" aria-labelledby="login-heading">
 
         <h2 id="login-heading">Welcome Back!</h2>
@@ -74,24 +65,7 @@
 
         <form id="loginForm">
 
-          <fieldset class="role-selector">
-            <legend class="sr-only">Select your role</legend>
-
-            <label class="role-option">
-              <input type="radio" name="role" value="student" checked>
-              <span>Student</span>
-            </label>
-
-            <label class="role-option">
-              <input type="radio" name="role" value="teacher">
-              <span>Teacher</span>
-            </label>
-
-            <label class="role-option">
-              <input type="radio" name="role" value="admin">
-              <span>Admin</span>
-            </label>
-          </fieldset>
+          <p class="login-subtitle">For students, teachers, and administrators.</p>
 
           <div class="form-group">
             <label class="sr-only" for="loginEmail">Email Address</label>
@@ -119,16 +93,7 @@
             >
           </div>
 
-          <div class="login-options">
-            <label class="remember-me">
-              <input type="checkbox" id="rememberMe">
-              Remember Me
-            </label>
-
-            <a href="#" class="forgot-password">
-              Forgot Password?
-            </a>
-          </div>
+          <p class="login-subtitle">Need password recovery? Contact your campus administrator.</p>
 
           <button type="submit" class="login-submit">
             Login →

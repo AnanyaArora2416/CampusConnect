@@ -11,7 +11,8 @@
   <link rel="stylesheet" href="css/login.css">
   <link rel="stylesheet" href="css/register.css">
 
-  <script src="js/auth.js" defer></script>
+  <script src="js/config.js" defer></script>
+<script src="js/auth.js" defer></script>
   <script src="js/register.js" defer></script>
 </head>
 
@@ -19,7 +20,7 @@
 
   <div class="login-layout">
 
-    <!-- Navigation -->
+    
     <header class="login-navbar">
 
       <a href="index.html" class="login-logo">
@@ -27,12 +28,7 @@
         <span>Campus<span class="brand-accent">Connect</span></span>
       </a>
 
-      <!-- <nav class="login-nav" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-        <a href="events.html">Events</a>
-        <a href="assignments.html">Assignments</a>
-        <a href="index.html#features">About</a>
-      </nav> -->
+      
 
       <a href="login.html" class="register-link">Login</a>
 
@@ -40,14 +36,14 @@
 
     <main class="login-main">
 
-      <!-- Left illustration -->
+      
       <section class="campus-panel" aria-label="CampusConnect introduction">
 
         <div class="campus-image"></div>
 
         <span class="campus-status">
           <span class="status-dot"></span>
-          Join 10k+ Students
+          Your campus, connected
         </span>
 
         <span class="campus-tagline">
@@ -62,17 +58,13 @@
 
           <h1>Connect. Learn. Grow.</h1>
 
-          <!-- <p>
-            Discover campus events, track assignments,
-            and stay connected with your college community
-            in one intuitive hub.
-          </p> -->
+          
 
         </div>
 
       </section>
 
-      <!-- Registration form -->
+      
       <section class="login-card register-card" aria-labelledby="register-heading">
 
         <h2 id="register-heading">Create Account</h2>
@@ -83,28 +75,7 @@
 
         <form id="registerForm">
 
-          <fieldset class="role-selector">
-            <legend class="sr-only">Select account type</legend>
-
-            <label class="role-option">
-              <input
-                type="radio"
-                name="role"
-                value="student"
-                checked
-              >
-              <span>Student</span>
-            </label>
-
-            <label class="role-option">
-              <input
-                type="radio"
-                name="role"
-                value="teacher"
-              >
-              <span>Teacher</span>
-            </label>
-          </fieldset>
+          <p class="login-subtitle">Student registration. Teachers receive accounts from an administrator.</p>
 
           <div class="form-group">
             <label class="sr-only" for="registerName">Full Name</label>
