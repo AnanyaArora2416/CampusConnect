@@ -1,2 +1,13 @@
-function describe(error){const code=String(error.code||'');if(['ENOTFOUND','ENODATA','EAI_AGAIN'].includes(code))return 'Database DNS lookup failed. Check your Atlas hostname and this machine’s DNS/network access.';if(['ECONNREFUSED','ETIMEDOUT','ETIMEOUT'].includes(code))return 'Database network connection failed. Check outbound MongoDB access and Atlas Network Access.';if(code==='18'||error.codeName==='AuthenticationFailed')return 'Database authentication failed. Check database user credentials privately.';if(error.name==='MongoServerSelectionError')return 'Database connection timed out. Check Atlas cluster status, Network Access and outbound connectivity.';return 'Database startup failed. Check configuration, connection and existing unique indexes.';}
-module.exports={describe};
+function describe(error) {
+  const code = String(error.code || '');
+  if (['ENOTFOUND', 'ENODATA', 'EAI_AGAIN'].includes(code))
+    return 'Database DNS lookup failed. Check your Atlas hostname and this machine’s DNS/network access.';
+  if (['ECONNREFUSED', 'ETIMEDOUT', 'ETIMEOUT'].includes(code))
+    return 'Database network connection failed. Check outbound MongoDB access and Atlas Network Access.';
+  if (code === '18' || error.codeName === 'AuthenticationFailed')
+    return 'Database authentication failed. Check database user credentials privately.';
+  if (error.name === 'MongoServerSelectionError')
+    return 'Database connection timed out. Check Atlas cluster status, Network Access and outbound connectivity.';
+  return 'Database startup failed. Check configuration, connection and existing unique indexes.';
+}
+module.exports = { describe };

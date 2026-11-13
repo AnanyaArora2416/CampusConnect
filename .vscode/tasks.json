@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "CampusConnect: install dependencies",
+      "type": "shell",
+      "command": "npm run setup",
+      "problemMatcher": []
+    },
+    {
+      "label": "CampusConnect: check database (read-only)",
+      "type": "shell",
+      "command": "npm run check-db",
+      "problemMatcher": []
+    },
+    {
+      "label": "CampusConnect: API tests",
+      "type": "shell",
+      "command": "npm test",
+      "group": "test",
+      "problemMatcher": []
+    }
+  ]
+}

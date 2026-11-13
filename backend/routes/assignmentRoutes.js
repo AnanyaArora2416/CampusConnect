@@ -1,10 +1,120 @@
-const router=require('express').Router(),v=require('../lib/utils'),files=require('../lib/files'),c=require('../controllers/assignmentController'),Submission=require('../models/Submission');const{protect}=require('../middleware/authMiddleware'),{authorize}=require('../middleware/roleMiddleware');router.use(protect);
-router.get('/',v.run(c.getAssignments));router.post('/',authorize('teacher','admin'),v.run(c.createAssignment));
-router.get('/:id',v.run(async(req,res)=>{const a=await c.visible(req),s=req.user.role==='student'?await Submission.findOne({assignment:a._id,student:req.user._id}):null;res.json({assignment:c.safe(a),submission:s?c.safeSubmission(s):null});}));
-router.put('/:id',authorize('teacher','admin'),v.run(c.updateAssignment));router.delete('/:id',authorize('teacher','admin'),v.run(c.deleteAssignment));
-const editable=v.run(async(req,res,next)=>{req.assignment=await c.visible(req);if(!v.owner(req.user,req.assignment))v.fail(403,'Only the owner can manage this assignment');next();});
-router.post('/:id/resources',authorize('teacher','admin'),editable,files.upload,v.run(async(req,res)=>{try{if(req.assignment.resources.length>=10)v.fail(400,'Maximum 10 resources');req.assignment.resources.push(await files.validate(req.file));await req.assignment.save();res.status(201).json({assignment:c.safe(req.assignment)});}catch(e){await files.remove(req.file?.filename,req.app.locals.config);throw e;}}));
-router.get('/:id/resources/:resourceId/download',v.run(async(req,res)=>{const a=await c.visible(req);v.id(req.params.resourceId);const file=a.resources.id(req.params.resourceId);if(!file)v.fail(404,'Resource not found');await files.download(req,res,file);}));
-router.delete('/:id/resources/:resourceId',authorize('teacher','admin'),editable,v.run(async(req,res)=>{v.id(req.params.resourceId);const f=req.assignment.resources.id(req.params.resourceId);if(!f)v.fail(404,'Resource not found');const name=f.storedName;f.deleteOne();await req.assignment.save();await files.remove(name,req.app.locals.config);res.json({message:'Resource removed'});}));
-router.post('/:id/submissions',authorize('student'),v.run(async(req,res,next)=>{req.assignment=await c.visible(req);next();}),files.upload,v.run(async(req,res)=>{try{const file=await files.validate(req.file),now=new Date(),s=await Submission.create({assignment:req.assignment._id,student:req.user._id,file,submittedAt:now,late:now>req.assignment.dueDate});res.status(201).json({message:'Submission saved',submission:c.safeSubmission(s)});}catch(e){await files.remove(req.file?.filename,req.app.locals.config);throw e;}}));
-router.get('/:id/submissions',authorize('teacher','admin'),editable,v.run(async(req,res)=>{const{page,limit,skip}=v.pagination(req.query),filter={assignment:req.assignment._id};const[items,total]=await Promise.all([Submission.find(filter).populate('student','name email').sort({submittedAt:-1}).skip(skip).limit(limit),Submission.countDocuments(filter)]);res.json({submissions:items.map(c.safeSubmission),total,page,pages:Math.ceil(total/limit)});}));module.exports=router;
+const router = require('express').Router(),
+  v = require('../lib/utils'),
+  files = require('../lib/files'),
+  c = require('../controllers/assignmentController'),
+  Submission = require('../models/Submission');
+const { protect } = require('../middleware/authMiddleware'),
+  { authorize } = require('../middleware/roleMiddleware');
+router.use(protect);
+router.get('/', v.run(c.getAssignments));
+router.post('/', authorize('teacher', 'admin'), v.run(c.createAssignment));
+router.get(
+  '/:id',
+  v.run(async (req, res) => {
+    const a = await c.visible(req),
+      s =
+        req.user.role === 'student'
+          ? await Submission.findOne({ assignment: a._id, student: req.user._id })
+          : null;
+    res.json({ assignment: c.safe(a), submission: s ? c.safeSubmission(s) : null });
+  }),
+);
+router.put('/:id', authorize('teacher', 'admin'), v.run(c.updateAssignment));
+router.delete('/:id', authorize('teacher', 'admin'), v.run(c.deleteAssignment));
+const editable = v.run(async (req, res, next) => {
+  req.assignment = await c.visible(req);
+  if (!v.owner(req.user, req.assignment)) v.fail(403, 'Only the owner can manage this assignment');
+  next();
+});
+router.post(
+  '/:id/resources',
+  authorize('teacher', 'admin'),
+  editable,
+  files.upload,
+  v.run(async (req, res) => {
+    try {
+      if (req.assignment.resources.length >= 10) v.fail(400, 'Maximum 10 resources');
+      req.assignment.resources.push(await files.validate(req.file));
+      await req.assignment.save();
+      res.status(201).json({ assignment: c.safe(req.assignment) });
+    } catch (e) {
+      await files.remove(req.file?.filename, req.app.locals.config);
+      throw e;
+    }
+  }),
+);
+router.get(
+  '/:id/resources/:resourceId/download',
+  v.run(async (req, res) => {
+    const a = await c.visible(req);
+    v.id(req.params.resourceId);
+    const file = a.resources.id(req.params.resourceId);
+    if (!file) v.fail(404, 'Resource not found');
+    await files.download(req, res, file);
+  }),
+);
+router.delete(
+  '/:id/resources/:resourceId',
+  authorize('teacher', 'admin'),
+  editable,
+  v.run(async (req, res) => {
+    v.id(req.params.resourceId);
+    const f = req.assignment.resources.id(req.params.resourceId);
+    if (!f) v.fail(404, 'Resource not found');
+    const name = f.storedName;
+    f.deleteOne();
+    await req.assignment.save();
+    await files.remove(name, req.app.locals.config);
+    res.json({ message: 'Resource removed' });
+  }),
+);
+router.post(
+  '/:id/submissions',
+  authorize('student'),
+  v.run(async (req, res, next) => {
+    req.assignment = await c.visible(req);
+    next();
+  }),
+  files.upload,
+  v.run(async (req, res) => {
+    try {
+      const file = await files.validate(req.file),
+        now = new Date(),
+        s = await Submission.create({
+          assignment: req.assignment._id,
+          student: req.user._id,
+          file,
+          submittedAt: now,
+          late: now > req.assignment.dueDate,
+        });
+      res.status(201).json({ message: 'Submission saved', submission: c.safeSubmission(s) });
+    } catch (e) {
+      await files.remove(req.file?.filename, req.app.locals.config);
+      throw e;
+    }
+  }),
+);
+router.get(
+  '/:id/submissions',
+  authorize('teacher', 'admin'),
+  editable,
+  v.run(async (req, res) => {
+    const { page, limit, skip } = v.pagination(req.query),
+      filter = { assignment: req.assignment._id };
+    const [items, total] = await Promise.all([
+      Submission.find(filter)
+        .populate('student', 'name email')
+        .sort({ submittedAt: -1 })
+        .skip(skip)
+        .limit(limit),
+      Submission.countDocuments(filter),
+    ]);
+    res.json({
+      submissions: items.map(c.safeSubmission),
+      total,
+      page,
+      pages: Math.ceil(total / limit),
+    });
+  }),
+);
+module.exports = router;

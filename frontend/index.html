@@ -1,75 +1,67 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CampusConnect | Home</title>
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/main.js" defer></script>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CampusConnect | Home</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="navbar">
+      <a href="index.html" class="logo">CampusConnect</a>
 
-  <header class="navbar">
-    <a href="index.html" class="logo">CampusConnect</a>
+      <nav aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="#features">Features</a>
+        <a href="login.html">Login</a>
+        <a href="register.html" class="nav-button">Register</a>
+      </nav>
+    </header>
 
-    <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="#features">Features</a>
-      <a href="login.html">Login</a>
-      <a href="register.html" class="nav-button">Register</a>
-    </nav>
-  </header>
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <p class="eyebrow">Your campus, connected</p>
 
-  <main>
-    <section class="hero">
-      <div class="hero-content">
-        <p class="eyebrow">Your campus, connected</p>
+          <h1>Connect. Learn. Grow.</h1>
 
-        <h1>Connect. Learn. Grow.</h1>
+          <p class="hero-description">
+            CampusConnect brings students, teachers and administrators together on one simple
+            platform for academic collaboration.
+          </p>
 
-        <p class="hero-description">
-          CampusConnect brings students, teachers and
-          administrators together on one simple platform
-          for academic collaboration.
-        </p>
-
-        <div class="hero-actions">
-          <a href="register.html" class="btn btn-primary">
-            Get Started
-          </a>
-          <a href="#features" class="btn btn-secondary">
-            Explore Features
-          </a>
+          <div class="hero-actions">
+            <a href="register.html" class="btn btn-primary"> Get Started </a>
+            <a href="#features" class="btn btn-secondary"> Explore Features </a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section id="features" class="features">
-      <h2>Everything your campus needs</h2>
+      <section id="features" class="features">
+        <h2>Everything your campus needs</h2>
 
-      <div class="feature-grid">
-        <article class="feature-card">
-          <h3>Assignments</h3>
-          <p>Create, publish and view academic assignments.</p>
-        </article>
+        <div class="feature-grid">
+          <article class="feature-card">
+            <h3>Assignments</h3>
+            <p>Create, publish and view academic assignments.</p>
+          </article>
 
-        <article class="feature-card">
-          <h3>Student Dashboard</h3>
-          <p>Access academic information in one place.</p>
-        </article>
+          <article class="feature-card">
+            <h3>Student Dashboard</h3>
+            <p>Access academic information in one place.</p>
+          </article>
 
-        <article class="feature-card">
-          <h3>Teacher Dashboard</h3>
-          <p>Manage coursework and communicate with students.</p>
-        </article>
-      </div>
-    </section>
-  </main>
+          <article class="feature-card">
+            <h3>Teacher Dashboard</h3>
+            <p>Manage coursework and communicate with students.</p>
+          </article>
+        </div>
+      </section>
+    </main>
 
-  <footer>
-    <p>&copy; <span id="year"></span> CampusConnect</p>
-  </footer>
-
-</body>
+    <footer>
+      <p>&copy; <span id="year"></span> CampusConnect</p>
+    </footer>
+  </body>
 </html>

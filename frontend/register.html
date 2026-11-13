@@ -1,156 +1,121 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>CampusConnect | Register</title>
+    <title>CampusConnect | Register</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/login.css">
-  <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
+    <link rel="stylesheet" href="css/register.css" />
 
-  <script src="js/config.js" defer></script>
-<script src="js/auth.js" defer></script>
-  <script src="js/register.js" defer></script>
-</head>
+    <script src="js/config.js" defer></script>
+    <script src="js/auth.js" defer></script>
+    <script src="js/register.js" defer></script>
+  </head>
 
-<body class="login-page register-page">
+  <body class="login-page register-page">
+    <div class="login-layout">
+      <header class="login-navbar">
+        <a href="index.html" class="login-logo">
+          <span class="logo-icon">✉</span>
+          <span>Campus<span class="brand-accent">Connect</span></span>
+        </a>
 
-  <div class="login-layout">
+        <a href="login.html" class="register-link">Login</a>
+      </header>
 
-    
-    <header class="login-navbar">
+      <main class="login-main">
+        <section class="campus-panel" aria-label="CampusConnect introduction">
+          <div class="campus-image"></div>
 
-      <a href="index.html" class="login-logo">
-        <span class="logo-icon">✉</span>
-        <span>Campus<span class="brand-accent">Connect</span></span>
-      </a>
-
-      
-
-      <a href="login.html" class="register-link">Login</a>
-
-    </header>
-
-    <main class="login-main">
-
-      
-      <section class="campus-panel" aria-label="CampusConnect introduction">
-
-        <div class="campus-image"></div>
-
-        <span class="campus-status">
-          <span class="status-dot"></span>
-          Your campus, connected
-        </span>
-
-        <span class="campus-tagline">
-          Better Campus Together
-        </span>
-
-        <div class="campus-content">
-
-          <span class="student-count">
-            Your College Companion
+          <span class="campus-status">
+            <span class="status-dot"></span>
+            Your campus, connected
           </span>
 
-          <h1>Connect. Learn. Grow.</h1>
+          <span class="campus-tagline"> Better Campus Together </span>
 
-          
+          <div class="campus-content">
+            <span class="student-count"> Your College Companion </span>
 
-        </div>
-
-      </section>
-
-      
-      <section class="login-card register-card" aria-labelledby="register-heading">
-
-        <h2 id="register-heading">Create Account</h2>
-
-        <p class="login-subtitle">
-          Join our campus community
-        </p>
-
-        <form id="registerForm">
-
-          <p class="login-subtitle">Student registration. Teachers receive accounts from an administrator.</p>
-
-          <div class="form-group">
-            <label class="sr-only" for="registerName">Full Name</label>
-            <input
-              type="text"
-              id="registerName"
-              name="name"
-              placeholder="Full Name"
-              autocomplete="name"
-              minlength="2"
-              required
-            >
+            <h1>Connect. Learn. Grow.</h1>
           </div>
+        </section>
 
-          <div class="form-group">
-            <label class="sr-only" for="registerEmail">College Email</label>
-            <input
-              type="email"
-              id="registerEmail"
-              name="email"
-              placeholder="College Email"
-              autocomplete="email"
-              required
-            >
-          </div>
+        <section class="login-card register-card" aria-labelledby="register-heading">
+          <h2 id="register-heading">Create Account</h2>
 
-          <div class="form-group">
-            <label class="sr-only" for="registerPassword">Password</label>
-            <input
-              type="password"
-              id="registerPassword"
-              name="password"
-              placeholder="Password"
-              autocomplete="new-password"
-              minlength="8"
-              required
-            >
-          </div>
+          <p class="login-subtitle">Join our campus community</p>
 
-          <div class="form-group">
-            <label class="sr-only" for="confirmPassword">Confirm Password</label>
-            <input
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              autocomplete="new-password"
-              minlength="8"
-              required
-            >
-          </div>
+          <form id="registerForm">
+            <p class="login-subtitle">
+              Student registration. Teachers receive accounts from an administrator.
+            </p>
 
-          <button type="submit" class="login-submit">
-            Register →
-          </button>
+            <div class="form-group">
+              <label class="sr-only" for="registerName">Full Name</label>
+              <input
+                type="text"
+                id="registerName"
+                name="name"
+                placeholder="Full Name"
+                autocomplete="name"
+                minlength="2"
+                required
+              />
+            </div>
 
-          <p
-            id="registerMessage"
-            class="login-message"
-            role="status"
-            aria-live="polite"
-          ></p>
+            <div class="form-group">
+              <label class="sr-only" for="registerEmail">College Email</label>
+              <input
+                type="email"
+                id="registerEmail"
+                name="email"
+                placeholder="College Email"
+                autocomplete="email"
+                required
+              />
+            </div>
 
-        </form>
+            <div class="form-group">
+              <label class="sr-only" for="registerPassword">Password</label>
+              <input
+                type="password"
+                id="registerPassword"
+                name="password"
+                placeholder="Password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
 
-        <p class="signup-text">
-          Already have an account?
-          <a href="login.html">Login</a>
-        </p>
+            <div class="form-group">
+              <label class="sr-only" for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                id="confirmPassword"
+                name="confirmPassword"
+                placeholder="Confirm Password"
+                autocomplete="new-password"
+                minlength="8"
+                required
+              />
+            </div>
 
-      </section>
+            <button type="submit" class="login-submit">Register →</button>
 
-    </main>
+            <p id="registerMessage" class="login-message" role="status" aria-live="polite"></p>
+          </form>
 
-  </div>
-
-</body>
+          <p class="signup-text">
+            Already have an account?
+            <a href="login.html">Login</a>
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
 </html>

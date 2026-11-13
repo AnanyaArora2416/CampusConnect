@@ -1,0 +1,32 @@
+
+> campusconnect-backend@2.0.0 test
+> node --test --test-concurrency=1 tests/api.test.js
+
+✔ registration validates fields, blocks role escalation and duplicate email (4137.657597ms)
+✔ login, expiry and stored-role gates reject unauthorized access (130.317108ms)
+✔ assignment CRUD validates fields, ownership, draft visibility and legacy defaults (115.484346ms)
+✔ private PDF resources validate content and permissions (61.402116ms)
+✔ ZIP and DOCX archives are inspected and resources can be removed (99.907204ms)
+✔ immutable submissions persist receipts and protect file downloads (62.237173ms)
+✔ oversized uploads fail and temporary files are removed (274.845859ms)
+✔ grading validates bounds, ownership and saved student feedback (106.556687ms)
+✔ dashboard metrics reflect actual submitted, overdue and late work (87.443288ms)
+✔ event creation, draft visibility and organizer access work (80.602654ms)
+✔ transactional registration enforces capacity, uniqueness and cancellation (127.810957ms)
+✔ admin provisioning and disabling reject escalation and revoke sessions (417.235719ms)
+✔ profile, password change and logout invalidate old sessions (897.189641ms)
+✔ archiving hides coursework and retains submission records (53.339991ms)
+✔ JSON errors, security headers, CORS, secret isolation and throttling (30.217718ms)
+ℹ tests 15
+ℹ suites 0
+ℹ pass 15
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 7541.971302
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

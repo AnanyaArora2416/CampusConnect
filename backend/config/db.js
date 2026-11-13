@@ -1,1 +1,5 @@
-const mongoose=require('mongoose');module.exports=async(uri,dbName)=>{await mongoose.connect(uri,{dbName,serverSelectionTimeoutMS:10000});await Promise.all(Object.values(mongoose.models).map(m=>m.init()));};
+const mongoose = require('mongoose');
+module.exports = async (uri, dbName) => {
+  await mongoose.connect(uri, { dbName, serverSelectionTimeoutMS: 10000 });
+  await Promise.all(Object.values(mongoose.models).map((m) => m.init()));
+};

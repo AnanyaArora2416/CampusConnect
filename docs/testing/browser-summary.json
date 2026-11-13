@@ -1,0 +1,21 @@
+{
+  "results": [
+    "Anonymous visitors are redirected from protected pages",
+    "Student registration and login work through actual forms",
+    "All three roles sign in to their own dashboards",
+    "Teacher creates and publishes coursework with requirements and private resource",
+    "Incoming search queries and real assignment IDs work",
+    "Saved submission receipt survives refresh and private download works",
+    "Teacher grades persist and students see saved feedback",
+    "Event create, register, My events and cancellation persist",
+    "Admin provisions teacher accounts and disables access through UI",
+    "Student cannot open administrator pages",
+    "Profile, password changes and logout complete end to end",
+    "15 page states at two breakpoints have no document overflow; mobile sign-out visible",
+    "API outages expose retry and expired sessions redirect",
+    "Five representative screens pass automated WCAG A/AA checks",
+    "No uncaught JavaScript exceptions or CSP violations"
+  ],
+  "errors": [],
+  "csp": []
+}

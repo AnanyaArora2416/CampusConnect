@@ -1,0 +1,24 @@
+
+> campusconnect-backend@2.0.0 test:browser
+> node tests/browser.cjs
+
+PASS Anonymous visitors are redirected from protected pages
+PASS Student registration and login work through actual forms
+PASS All three roles sign in to their own dashboards
+PASS Teacher creates and publishes coursework with requirements and private resource
+PASS Incoming search queries and real assignment IDs work
+PASS Saved submission receipt survives refresh and private download works
+PASS Teacher grades persist and students see saved feedback
+PASS Event create, register, My events and cancellation persist
+PASS Admin provisions teacher accounts and disables access through UI
+PASS Student cannot open administrator pages
+PASS Profile, password changes and logout complete end to end
+PASS 15 page states at two breakpoints have no document overflow; mobile sign-out visible
+PASS API outages expose retry and expired sessions redirect
+PASS Five representative screens pass automated WCAG A/AA checks
+PASS No uncaught JavaScript exceptions or CSP violations
+npm notice
+npm notice New major version of npm available! 11.9.0 -> 12.2.2
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.2
+npm notice To update run: npm install -g npm@12.2.2
+npm notice

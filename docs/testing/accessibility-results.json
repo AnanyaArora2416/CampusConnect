@@ -1,0 +1,22 @@
+[
+  {
+    "route": "dashboard.html",
+    "violations": []
+  },
+  {
+    "route": "create-assignment.html",
+    "violations": []
+  },
+  {
+    "route": "admin-dashboard.html?view=users",
+    "violations": []
+  },
+  {
+    "route": "login.html",
+    "violations": []
+  },
+  {
+    "route": "register.html",
+    "violations": []
+  }
+]

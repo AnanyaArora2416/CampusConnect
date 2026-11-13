@@ -1,4 +1,38 @@
 (() => {
- 'use strict';const form=document.getElementById('registerForm'),message=document.getElementById('registerMessage'),button=form.querySelector('[type=submit]');
- form.addEventListener('submit',async event=>{event.preventDefault();const data=new FormData(form),password=data.get('password');if(password!==data.get('confirmPassword')){message.textContent='Passwords do not match.';return;}if(password.length<8||new TextEncoder().encode(password).length>72){message.textContent='Use at least 8 characters and at most 72 UTF-8 bytes.';return;}button.disabled=true;message.textContent='Creating your account…';try{await campusAuth.request('/api/auth/register',{method:'POST',body:JSON.stringify({name:data.get('name'),email:data.get('email'),password})},{redirectOnUnauthorized:false});form.reset();message.textContent='Account created. Use the Login link below to sign in.';document.querySelector('.signup-text a').focus();}catch(e){message.textContent=e.message;}finally{button.disabled=false;}});
+  'use strict';
+  const form = document.getElementById('registerForm'),
+    message = document.getElementById('registerMessage'),
+    button = form.querySelector('[type=submit]');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const data = new FormData(form),
+      password = data.get('password');
+    if (password !== data.get('confirmPassword')) {
+      message.textContent = 'Passwords do not match.';
+      return;
+    }
+    if (password.length < 8 || new TextEncoder().encode(password).length > 72) {
+      message.textContent = 'Use at least 8 characters and at most 72 UTF-8 bytes.';
+      return;
+    }
+    button.disabled = true;
+    message.textContent = 'Creating your account…';
+    try {
+      await campusAuth.request(
+        '/api/auth/register',
+        {
+          method: 'POST',
+          body: JSON.stringify({ name: data.get('name'), email: data.get('email'), password }),
+        },
+        { redirectOnUnauthorized: false },
+      );
+      form.reset();
+      message.textContent = 'Account created. Use the Login link below to sign in.';
+      document.querySelector('.signup-text a').focus();
+    } catch (e) {
+      message.textContent = e.message;
+    } finally {
+      button.disabled = false;
+    }
+  });
 })();

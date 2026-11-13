@@ -1,3 +1,23 @@
-const mongoose=require('mongoose');
-const schema=new mongoose.Schema({title:{type:String,required:true,maxlength:150},description:{type:String,required:true,maxlength:5000},category:{type:String,enum:['Technology','Workshop','Cultural','Sports','Other'],required:true},location:{type:String,required:true,maxlength:200},startsAt:{type:Date,required:true},endsAt:{type:Date,required:true},capacity:{type:Number,required:true,min:1,max:100000},registrationCount:{type:Number,default:0,min:0},status:{type:String,enum:['draft','published','cancelled'],default:'draft'},createdBy:{type:mongoose.Schema.Types.ObjectId,ref:'User',required:true}},{timestamps:true});
-schema.index({status:1,startsAt:1});schema.index({createdBy:1,startsAt:1});module.exports=mongoose.model('Event',schema);
+const mongoose = require('mongoose');
+const schema = new mongoose.Schema(
+  {
+    title: { type: String, required: true, maxlength: 150 },
+    description: { type: String, required: true, maxlength: 5000 },
+    category: {
+      type: String,
+      enum: ['Technology', 'Workshop', 'Cultural', 'Sports', 'Other'],
+      required: true,
+    },
+    location: { type: String, required: true, maxlength: 200 },
+    startsAt: { type: Date, required: true },
+    endsAt: { type: Date, required: true },
+    capacity: { type: Number, required: true, min: 1, max: 100000 },
+    registrationCount: { type: Number, default: 0, min: 0 },
+    status: { type: String, enum: ['draft', 'published', 'cancelled'], default: 'draft' },
+    createdBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+  },
+  { timestamps: true },
+);
+schema.index({ status: 1, startsAt: 1 });
+schema.index({ createdBy: 1, startsAt: 1 });
+module.exports = mongoose.model('Event', schema);

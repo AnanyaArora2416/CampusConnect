@@ -1,4 +1,59 @@
-const router=require('express').Router(),bcrypt=require('bcryptjs'),User=require('../models/User'),v=require('../lib/utils');const{protect}=require('../middleware/authMiddleware'),{authorize}=require('../middleware/roleMiddleware');router.use(protect,authorize('admin'));
-router.get('/',v.run(async(req,res)=>{const filter={};if(req.query.role)filter.role=v.choice(req.query.role,'role',['student','teacher','admin']);const q=v.search(req.query.q);if(q)filter.$or=['name','email'].map(k=>({[k]:{$regex:q,$options:'i'}}));const{page,limit,skip}=v.pagination(req.query),[users,total]=await Promise.all([User.find(filter).sort({createdAt:-1}).skip(skip).limit(limit),User.countDocuments(filter)]);res.json({users:users.map(v.safeUser),total,page,pages:Math.ceil(total/limit)});}));
-router.post('/',v.run(async(req,res)=>{const b=v.body(req.body,['name','email','password','role']),name=v.text(b.name,'Name',100,2),email=v.email(b.email),password=v.password(b.password),role=v.choice(b.role,'role',['student','teacher']);const u=await User.create({name,email,password:await bcrypt.hash(password,12),role});res.status(201).json({message:'Account created. Share its temporary password privately.',user:v.safeUser(u)});}));
-router.patch('/:id',v.run(async(req,res)=>{v.id(req.params.id);const b=v.body(req.body,['status','role']);if(!Object.keys(b).length)v.fail(400,'Supply an update');const user=await User.findById(req.params.id).select('+tokenVersion');if(!user)v.fail(404,'User not found');if(user.role==='admin')v.fail(403,'Administrator accounts cannot be changed here');if(b.status!==undefined)user.status=v.choice(b.status,'status',['active','disabled']);if(b.role!==undefined&&b.role!==user.role){if(user.role!=='student'||b.role!=='teacher')v.fail(400,'Only student-to-teacher promotion is supported');user.role='teacher';}user.tokenVersion=(user.tokenVersion||0)+1;await user.save();res.json({message:'Access updated; sessions revoked',user:v.safeUser(user)});}));module.exports=router;
+const router = require('express').Router(),
+  bcrypt = require('bcryptjs'),
+  User = require('../models/User'),
+  v = require('../lib/utils');
+const { protect } = require('../middleware/authMiddleware'),
+  { authorize } = require('../middleware/roleMiddleware');
+router.use(protect, authorize('admin'));
+router.get(
+  '/',
+  v.run(async (req, res) => {
+    const filter = {};
+    if (req.query.role)
+      filter.role = v.choice(req.query.role, 'role', ['student', 'teacher', 'admin']);
+    const q = v.search(req.query.q);
+    if (q) filter.$or = ['name', 'email'].map((k) => ({ [k]: { $regex: q, $options: 'i' } }));
+    const { page, limit, skip } = v.pagination(req.query),
+      [users, total] = await Promise.all([
+        User.find(filter).sort({ createdAt: -1 }).skip(skip).limit(limit),
+        User.countDocuments(filter),
+      ]);
+    res.json({ users: users.map(v.safeUser), total, page, pages: Math.ceil(total / limit) });
+  }),
+);
+router.post(
+  '/',
+  v.run(async (req, res) => {
+    const b = v.body(req.body, ['name', 'email', 'password', 'role']),
+      name = v.text(b.name, 'Name', 100, 2),
+      email = v.email(b.email),
+      password = v.password(b.password),
+      role = v.choice(b.role, 'role', ['student', 'teacher']);
+    const u = await User.create({ name, email, password: await bcrypt.hash(password, 12), role });
+    res.status(201).json({
+      message: 'Account created. Share its temporary password privately.',
+      user: v.safeUser(u),
+    });
+  }),
+);
+router.patch(
+  '/:id',
+  v.run(async (req, res) => {
+    v.id(req.params.id);
+    const b = v.body(req.body, ['status', 'role']);
+    if (!Object.keys(b).length) v.fail(400, 'Supply an update');
+    const user = await User.findById(req.params.id).select('+tokenVersion');
+    if (!user) v.fail(404, 'User not found');
+    if (user.role === 'admin') v.fail(403, 'Administrator accounts cannot be changed here');
+    if (b.status !== undefined) user.status = v.choice(b.status, 'status', ['active', 'disabled']);
+    if (b.role !== undefined && b.role !== user.role) {
+      if (user.role !== 'student' || b.role !== 'teacher')
+        v.fail(400, 'Only student-to-teacher promotion is supported');
+      user.role = 'teacher';
+    }
+    user.tokenVersion = (user.tokenVersion || 0) + 1;
+    await user.save();
+    res.json({ message: 'Access updated; sessions revoked', user: v.safeUser(user) });
+  }),
+);
+module.exports = router;

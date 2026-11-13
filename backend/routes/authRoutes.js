@@ -1,6 +1,49 @@
-const router=require('express').Router(),bcrypt=require('bcryptjs'),User=require('../models/User'),v=require('../lib/utils');const {protect}=require('../middleware/authMiddleware'),{authorize}=require('../middleware/roleMiddleware'),c=require('../controllers/authController');
-router.post('/register',v.run(c.registerUser));router.post('/login',v.run(c.loginUser));router.get('/me',protect,(req,res)=>res.json({user:v.safeUser(req.user)}));
-router.post('/logout',protect,v.run(async(req,res)=>{await User.updateOne({_id:req.user._id},{$inc:{tokenVersion:1}});res.json({message:'Signed out on all devices'});}));
-router.patch('/me',protect,v.run(async(req,res)=>{const b=v.body(req.body,['name']);req.user.name=v.text(b.name,'Name',100,2);await req.user.save();res.json({message:'Profile updated',user:v.safeUser(req.user)});}));
-router.put('/password',protect,v.run(async(req,res)=>{const b=v.body(req.body,['currentPassword','newPassword']);v.password(b.currentPassword);v.password(b.newPassword);const user=await User.findById(req.user._id).select('+password +tokenVersion');if(!await bcrypt.compare(b.currentPassword,user.password))v.fail(400,'Current password is incorrect');user.password=await bcrypt.hash(b.newPassword,12);user.tokenVersion=(user.tokenVersion||0)+1;await user.save();res.json({message:'Password changed. Sign in again.'});}));
-for(const role of ['student','teacher','admin'])router.get(`/${role}-area`,protect,authorize(role),(req,res)=>res.json({message:`Welcome to the ${role} area`}));module.exports=router;
+const router = require('express').Router(),
+  bcrypt = require('bcryptjs'),
+  User = require('../models/User'),
+  v = require('../lib/utils');
+const { protect } = require('../middleware/authMiddleware'),
+  { authorize } = require('../middleware/roleMiddleware'),
+  c = require('../controllers/authController');
+router.post('/register', v.run(c.registerUser));
+router.post('/login', v.run(c.loginUser));
+router.get('/me', protect, (req, res) => res.json({ user: v.safeUser(req.user) }));
+router.post(
+  '/logout',
+  protect,
+  v.run(async (req, res) => {
+    await User.updateOne({ _id: req.user._id }, { $inc: { tokenVersion: 1 } });
+    res.json({ message: 'Signed out on all devices' });
+  }),
+);
+router.patch(
+  '/me',
+  protect,
+  v.run(async (req, res) => {
+    const b = v.body(req.body, ['name']);
+    req.user.name = v.text(b.name, 'Name', 100, 2);
+    await req.user.save();
+    res.json({ message: 'Profile updated', user: v.safeUser(req.user) });
+  }),
+);
+router.put(
+  '/password',
+  protect,
+  v.run(async (req, res) => {
+    const b = v.body(req.body, ['currentPassword', 'newPassword']);
+    v.password(b.currentPassword);
+    v.password(b.newPassword);
+    const user = await User.findById(req.user._id).select('+password +tokenVersion');
+    if (!(await bcrypt.compare(b.currentPassword, user.password)))
+      v.fail(400, 'Current password is incorrect');
+    user.password = await bcrypt.hash(b.newPassword, 12);
+    user.tokenVersion = (user.tokenVersion || 0) + 1;
+    await user.save();
+    res.json({ message: 'Password changed. Sign in again.' });
+  }),
+);
+for (const role of ['student', 'teacher', 'admin'])
+  router.get(`/${role}-area`, protect, authorize(role), (req, res) =>
+    res.json({ message: `Welcome to the ${role} area` }),
+  );
+module.exports = router;

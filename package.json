@@ -1,0 +1,20 @@
+{
+  "name": "campusconnect",
+  "version": "2.0.0",
+  "private": true,
+  "description": "CampusConnect MCA project — root command shortcuts",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "setup": "npm --prefix backend ci",
+    "start": "npm --prefix backend start",
+    "dev": "npm --prefix backend run dev",
+    "demo": "npm --prefix backend run demo",
+    "check-db": "npm --prefix backend run check-db",
+    "provision": "npm --prefix backend run provision",
+    "reset-password": "npm --prefix backend run reset-password",
+    "test": "npm --prefix backend test",
+    "test:browser": "npm --prefix backend run test:browser"
+  }
+}
