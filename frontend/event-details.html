@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Details | CampusConnect</title>
+  <link rel="stylesheet" href="css/event-details.css">
+  <script src="js/event-details.js" defer></script>
+</head>
+<body>
+<div class="app-layout">
+
+  <aside class="sidebar" id="sidebar">
+    <a href="dashboard.html" class="brand">
+      Campus<span>Connect</span>
+    </a>
+
+    <nav class="sidebar-nav">
+      <a href="dashboard.html">▦ Home</a>
+      <a href="assignments.html">▤ Assignments</a>
+      <a href="events.html" class="active">▦ Events</a>
+      <a href="my-events.html">▣ My Events</a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="login.html">↪ Logout</a>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <button type="button" class="menu-btn" id="menuBtn"
+              aria-label="Toggle navigation">☰</button>
+
+      <div class="search-box">
+        <span>⌕</span>
+        <span>Campus Events / Event Details</span>
+      </div>
+
+      <div class="profile">
+        <span class="notification">♧</span>
+        <div class="avatar">S</div>
+        <div class="profile-info">
+          <strong>Student Portal</strong>
+          <small>CampusConnect</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="breadcrumb">
+        <a href="dashboard.html">Home</a>
+        <span>/</span>
+        <a href="events.html">Events</a>
+        <span>/</span>
+        <strong>Event Details</strong>
+      </div>
+
+      <a href="events.html" class="back-link">← Back to Events</a>
+
+      <div id="eventContent" hidden>
+
+        <section class="hero">
+          <div class="hero-decoration">✦</div>
+
+          <div class="hero-content">
+            <span class="hero-badge" id="heroCategory">Campus Event</span>
+            <h1 id="eventTitle">Event Title</h1>
+            <p id="heroDescription">Discover something exciting on campus.</p>
+
+            <div class="hero-meta">
+              <span id="heroDate">📅 Date</span>
+              <span id="heroTime">🕘 Time</span>
+              <span id="heroLocation">📍 Venue</span>
+            </div>
+          </div>
+        </section>
+
+        <div class="details-layout">
+
+          <div class="details-left">
+
+            <section class="panel">
+              <h2>✦ About This Event</h2>
+              <p id="eventDescription" class="description"></p>
+            </section>
+
+            <section class="panel">
+              <h2>▤ Event Highlights</h2>
+
+              <div class="highlights-grid">
+                <div class="highlight-card">
+                  <div class="highlight-icon">✦</div>
+                  <h3>Learn & Explore</h3>
+                  <p>Discover new ideas and experiences.</p>
+                </div>
+
+                <div class="highlight-card">
+                  <div class="highlight-icon">♧</div>
+                  <h3>Meet Students</h3>
+                  <p>Connect with your campus community.</p>
+                </div>
+
+                <div class="highlight-card">
+                  <div class="highlight-icon">★</div>
+                  <h3>Build Memories</h3>
+                  <p>Make the most of campus life.</p>
+                </div>
+              </div>
+            </section>
+
+            <section class="panel">
+              <h2>▣ Important Information</h2>
+
+              <div class="info-list">
+                <div>
+                  <span>Event Category</span>
+                  <strong id="infoCategory"></strong>
+                </div>
+
+                <div>
+                  <span>Event Date</span>
+                  <strong id="infoDate"></strong>
+                </div>
+
+                <div>
+                  <span>Starting Time</span>
+                  <strong id="infoTime"></strong>
+                </div>
+
+                <div>
+                  <span>Venue</span>
+                  <strong id="infoLocation"></strong>
+                </div>
+              </div>
+            </section>
+
+          </div>
+
+          <aside class="details-right">
+            <section class="panel registration-panel">
+              <div class="registration-icon">▣</div>
+              <h2>Join This Event</h2>
+              <p>
+                Be part of your campus community and
+                participate in exciting activities.
+              </p>
+
+              <div class="registration-summary">
+                <div>
+                  <span>📅 Date</span>
+                  <strong id="registerDate"></strong>
+                </div>
+
+                <div>
+                  <span>🕘 Time</span>
+                  <strong id="registerTime"></strong>
+                </div>
+
+                <div>
+                  <span>📍 Location</span>
+                  <strong id="registerLocation"></strong>
+                </div>
+              </div>
+
+              <button type="button" class="primary-btn" id="registerBtn">
+                Register for Event →
+              </button>
+
+              <p class="demo-note">
+                Demo mode: registration is saved in this browser only.
+              </p>
+
+              <p class="registration-message" id="registrationMessage"
+                 role="status" aria-live="polite"></p>
+            </section>
+
+            <section class="help-card">
+              <h3>✦ Stay Connected</h3>
+              <p>Explore other upcoming campus activities and opportunities.</p>
+              <a href="events.html">Browse More Events →</a>
+            </section>
+          </aside>
+
+        </div>
+      </div>
+
+      <section class="not-found" id="notFound" hidden>
+        <h2>Event not found</h2>
+        <p>
+          We couldn't find the selected event.
+          Please return to the Events page and choose an event.
+        </p>
+        <a href="events.html" class="primary-link">Browse Events →</a>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<!-- Success modal -->
+<div class="modal-backdrop" id="successModal" hidden>
+  <div class="modal-card" role="dialog" aria-modal="true"
+       aria-labelledby="modalTitle">
+
+    <button type="button" class="modal-close" id="closeModalBtn"
+            aria-label="Close dialog">×</button>
+
+    <div class="success-icon">✓</div>
+
+    <h2 id="modalTitle">Registration Preview Saved!</h2>
+
+    <p>
+      Your event selection has been saved locally in this browser.
+      No registration has been sent to the backend yet.
+    </p>
+
+    <div class="modal-event">
+      <span>Selected Event</span>
+      <strong id="modalEventName"></strong>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="secondary-btn" id="continueBtn">
+        Continue Browsing
+      </button>
+
+      <a href="my-events.html" class="primary-link">
+        My Events →
+      </a>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

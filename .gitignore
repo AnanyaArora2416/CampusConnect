@@ -1,0 +1,15 @@
+node_modules/
+.env
+.env.*
+!.env.example
+.DS_Store
+Thumbs.db
+
+# Private files and generated output
+**/uploads/
+**/storage/uploads/
+coverage/
+test-results/
+*.log
+*.pem
+*.key

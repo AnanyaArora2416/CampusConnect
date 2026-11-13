@@ -1,0 +1,318 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Admin Dashboard | CampusConnect</title>
+
+  <link rel="stylesheet" href="css/admin-dashboard.css">
+  <script src="js/admin-dashboard.js" defer></script>
+</head>
+
+<body>
+  <div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <a href="admin-dashboard.html" class="logo">
+        <span class="logo-icon">✉</span>
+        <span>Campus<span class="purple">Connect</span></span>
+      </a>
+
+      <p class="nav-heading">ADMIN PANEL</p>
+
+      <nav class="sidebar-nav" aria-label="Admin navigation">
+        <a href="admin-dashboard.html" class="nav-link active">
+          <span>⌂</span> Dashboard
+        </a>
+
+        <a href="#users" class="nav-link">
+          <span>♙</span> Manage Users
+        </a>
+
+        <a href="#assignments" class="nav-link">
+          <span>▤</span> Assignments
+        </a>
+
+        <a href="#events" class="nav-link">
+          <span>▦</span> Events
+        </a>
+
+        <a href="#activity" class="nav-link">
+          <span>◷</span> Activity
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="admin-badge">
+          <span class="admin-avatar">A</span>
+          <div>
+            <strong>Administrator</strong>
+            <small>Campus Management</small>
+          </div>
+        </div>
+
+        <button id="logoutBtn" class="logout-btn" type="button">
+          ↪ Logout
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main-area">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button id="menuToggle" class="menu-toggle"
+                  type="button" aria-label="Toggle navigation">
+            ☰
+          </button>
+
+          <div>
+            <h2>Admin Dashboard</h2>
+            <p>Manage your campus community</p>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <span class="preview-pill">Frontend Preview</span>
+          <div class="profile-avatar">A</div>
+          <span class="profile-name">Admin</span>
+        </div>
+      </header>
+
+      <main class="dashboard-content">
+
+        <!-- WELCOME -->
+        <section class="welcome-card">
+          <div>
+            <p class="eyebrow">CAMPUSCONNECT ADMINISTRATION</p>
+            <h1>Welcome back, Admin! 👋</h1>
+            <p>
+              Here's an overview of your campus community,
+              assignments, and events.
+            </p>
+          </div>
+
+          <div class="welcome-actions">
+            <a href="#users" class="btn btn-white">Manage Users</a>
+            <a href="create-event.html" class="btn btn-primary">
+              + Create Event
+            </a>
+          </div>
+        </section>
+
+        <!-- PREVIEW NOTICE -->
+        <div class="preview-notice" role="status">
+          <strong>Preview mode:</strong>
+          The information below is sample UI data.
+          Backend integration and administrative actions
+          will be added later.
+        </div>
+
+        <!-- STATS -->
+        <section class="stats-grid" aria-label="Campus statistics">
+
+          <article class="stat-card">
+            <div class="stat-header">
+              <span>Total Students</span>
+              <span class="stat-icon purple-bg">♙</span>
+            </div>
+            <h3>1,248</h3>
+            <p>Sample student count</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-header">
+              <span>Total Teachers</span>
+              <span class="stat-icon blue-bg">♧</span>
+            </div>
+            <h3>86</h3>
+            <p>Sample teacher count</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-header">
+              <span>Assignments</span>
+              <span class="stat-icon orange-bg">▤</span>
+            </div>
+            <h3>42</h3>
+            <p>Sample assignment count</p>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-header">
+              <span>Upcoming Events</span>
+              <span class="stat-icon green-bg">▦</span>
+            </div>
+            <h3>12</h3>
+            <p>Sample event count</p>
+          </article>
+
+        </section>
+
+        <!-- USER MANAGEMENT -->
+        <section id="users" class="content-card">
+
+          <div class="section-header">
+            <div>
+              <h2>♙ User Management</h2>
+              <p>Preview student and teacher accounts</p>
+            </div>
+
+            <button class="btn btn-primary preview-action"
+                    type="button">
+              + Add User
+            </button>
+          </div>
+
+          <div class="table-toolbar">
+            <input id="userSearch" type="search"
+                   placeholder="Search users by name or email..."
+                   aria-label="Search users">
+
+            <select id="roleFilter" aria-label="Filter by role">
+              <option value="all">All Roles</option>
+              <option value="student">Students</option>
+              <option value="teacher">Teachers</option>
+            </select>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>User</th>
+                  <th>Role</th>
+                  <th>Department</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody id="usersTableBody">
+                <!-- Rendered by admin-dashboard.js -->
+              </tbody>
+            </table>
+          </div>
+
+        </section>
+
+        <!-- ASSIGNMENTS AND EVENTS -->
+        <div class="two-column-grid">
+
+          <section id="assignments" class="content-card">
+            <div class="section-header">
+              <div>
+                <h2>▤ Recent Assignments</h2>
+                <p>Sample coursework activity</p>
+              </div>
+
+              <a href="assignments.html" class="text-link">
+                View All →
+              </a>
+            </div>
+
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-icon purple-bg">▤</span>
+                <div>
+                  <strong>DBMS Project Phase 1</strong>
+                  <p>Database Management Systems</p>
+                </div>
+                <span class="status-badge published">Published</span>
+              </div>
+
+              <div class="activity-item">
+                <span class="activity-icon orange-bg">▤</span>
+                <div>
+                  <strong>Web Development Task</strong>
+                  <p>Frontend Development</p>
+                </div>
+                <span class="status-badge draft">Draft</span>
+              </div>
+            </div>
+          </section>
+
+          <section id="events" class="content-card">
+            <div class="section-header">
+              <div>
+                <h2>▦ Upcoming Events</h2>
+                <p>Sample campus events</p>
+              </div>
+
+              <a href="events.html" class="text-link">
+                View All →
+              </a>
+            </div>
+
+            <div class="activity-list">
+              <div class="activity-item">
+                <span class="activity-icon blue-bg">▦</span>
+                <div>
+                  <strong>Campus Tech Fest</strong>
+                  <p>Technology and innovation</p>
+                </div>
+                <span class="status-badge published">Upcoming</span>
+              </div>
+
+              <div class="activity-item">
+                <span class="activity-icon green-bg">▦</span>
+                <div>
+                  <strong>Career Workshop</strong>
+                  <p>Professional development</p>
+                </div>
+                <span class="status-badge published">Upcoming</span>
+              </div>
+            </div>
+          </section>
+
+        </div>
+
+        <!-- ACTIVITY -->
+        <section id="activity" class="content-card">
+          <div class="section-header">
+            <div>
+              <h2>◷ Recent Activity</h2>
+              <p>Illustrative activity feed</p>
+            </div>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div>
+                <strong>New student registration</strong>
+                <p>Example registration activity</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div>
+                <strong>Assignment published</strong>
+                <p>Example coursework update</p>
+              </div>
+            </div>
+
+            <div class="timeline-item">
+              <span class="timeline-dot"></span>
+              <div>
+                <strong>Event created</strong>
+                <p>Example campus event update</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" role="status"
+       aria-live="polite"></div>
+</body>
+</html>

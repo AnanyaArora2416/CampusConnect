@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Events | CampusConnect</title>
+  <link rel="stylesheet" href="css/my-events.css">
+  <script src="js/my-events.js" defer></script>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a href="dashboard.html" class="brand">
+        Campus<span>Connect</span>
+      </a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="dashboard.html">⌂ Home</a>
+        <a href="assignments.html">▤ Assignments</a>
+        <a href="events.html">▦ Events</a>
+        <a href="my-events.html" class="active" aria-current="page">
+          ▣ My Events
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a href="login.html">↪ Back to Login</a>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button type="button" id="menuBtn" class="menu-btn"
+                aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+        <div class="top-search">
+          <span aria-hidden="true">⌕</span>
+          <input type="search" id="eventSearch"
+                 placeholder="Search my registered events..."
+                 aria-label="Search registered events">
+        </div>
+
+        <div class="profile">
+          <span class="avatar" id="profileAvatar">S</span>
+          <div class="profile-info">
+            <strong id="profileName">Student Portal</strong>
+            <small>CampusConnect</small>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="dashboard.html">Home</a>
+          <span>/</span>
+          <strong>My Events</strong>
+        </nav>
+
+        <section class="page-header">
+          <div>
+            <span class="eyebrow">YOUR CAMPUS JOURNEY</span>
+            <h1>My Events <span>✦</span></h1>
+            <p>
+              Keep track of your registered campus events and
+              upcoming activities.
+            </p>
+          </div>
+
+          <a href="events.html" class="explore-btn">
+            + Explore Events
+          </a>
+        </section>
+
+        <section class="stats-grid" aria-label="Registration overview">
+          <article class="stat-card">
+            <span class="stat-icon purple">▣</span>
+            <div>
+              <p>Total Registrations</p>
+              <strong id="totalCount">0</strong>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon blue">▦</span>
+            <div>
+              <p>Upcoming Events</p>
+              <strong id="upcomingCount">0</strong>
+            </div>
+          </article>
+
+          <article class="stat-card">
+            <span class="stat-icon green">✓</span>
+            <div>
+              <p>Past Events</p>
+              <strong id="pastCount">0</strong>
+            </div>
+          </article>
+        </section>
+
+        <section class="events-section">
+          <div class="section-heading">
+            <div>
+              <h2>My Registered Events</h2>
+              <p>Manage your campus event registrations.</p>
+            </div>
+            <span class="count-badge" id="visibleCount">0 Events</span>
+          </div>
+
+          <div class="toolbar">
+            <div class="tabs" id="eventTabs" aria-label="Event status filters">
+              <button type="button" class="tab active" data-filter="all"
+                      aria-pressed="true">All Events</button>
+              <button type="button" class="tab" data-filter="upcoming"
+                      aria-pressed="false">Upcoming</button>
+              <button type="button" class="tab" data-filter="past"
+                      aria-pressed="false">Past Events</button>
+            </div>
+
+            <select id="sortEvents" aria-label="Sort registered events">
+              <option value="soonest">Date: Soonest First</option>
+              <option value="latest">Date: Latest First</option>
+              <option value="name">Name: A to Z</option>
+            </select>
+          </div>
+
+          <div class="events-grid" id="eventsGrid"></div>
+
+          <div class="empty-state" id="emptyState" hidden>
+            <div class="empty-icon">▦</div>
+            <h3 id="emptyTitle">No registered events yet</h3>
+            <p id="emptyDescription">
+              Explore campus events and register for one that interests you.
+            </p>
+            <a href="events.html" class="primary-link">
+              Explore Campus Events →
+            </a>
+          </div>
+        </section>
+
+        <section class="community-banner">
+          <div>
+            <span>✦ CAMPUSCONNECT</span>
+            <h2>There's More to Explore!</h2>
+            <p>
+              Discover new workshops, festivals, competitions,
+              and campus experiences.
+            </p>
+          </div>
+          <a href="events.html">Discover Events →</a>
+        </section>
+
+        <p class="demo-note">
+          Frontend preview: registrations are saved in this browser only,
+          not in MongoDB.
+        </p>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="cancelModal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true"
+         aria-labelledby="cancelTitle">
+      <button type="button" class="modal-close" id="closeModalBtn"
+              aria-label="Close dialog">×</button>
+
+      <div class="modal-icon">?</div>
+      <h2 id="cancelTitle">Cancel Registration?</h2>
+      <p>
+        Remove this event from your demo registrations?
+        You can register again from the Events page.
+      </p>
+
+      <div class="modal-event">
+        <span>Event</span>
+        <strong id="cancelEventName"></strong>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="secondary-btn" id="keepBtn">
+          Keep Registration
+        </button>
+        <button type="button" class="danger-btn" id="confirmCancelBtn">
+          Yes, Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p class="toast" id="toast" role="status" aria-live="polite" hidden></p>
+</body>
+</html>

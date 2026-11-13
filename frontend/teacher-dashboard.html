@@ -1,0 +1,266 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Dashboard | CampusConnect</title>
+  <link rel="stylesheet" href="css/teacher-dashboard.css">
+  <script src="js/teacher-dashboard.js" defer></script>
+</head>
+<body>
+
+<div class="app-layout">
+  <aside class="sidebar" id="sidebar">
+    <a href="teacher-dashboard.html" class="brand">
+      Campus<span>Connect</span>
+    </a>
+
+    <nav class="sidebar-nav" aria-label="Main navigation">
+      <a href="teacher-dashboard.html" class="active" aria-current="page">
+        <span class="nav-icon">⌂</span> Dashboard
+      </a>
+      <a href="assignments.html">
+        <span class="nav-icon">▤</span> Assignments
+      </a>
+      <a href="events.html">
+        <span class="nav-icon">▦</span> Events
+      </a>
+      <a href="create-assignment.html">
+        <span class="nav-icon">✚</span> Create Assignment
+      </a>
+      <a href="create-event.html">
+        <span class="nav-icon">▣</span> Create Event
+      </a>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <button type="button" id="logoutBtn">↪ Logout</button>
+    </div>
+  </aside>
+
+  <div class="main-area">
+    <header class="topbar">
+      <button type="button" id="menuBtn" class="menu-btn"
+              aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+      <div class="top-search">
+        <span aria-hidden="true">⌕</span>
+        <input type="search" id="dashboardSearch"
+               placeholder="Search assignments and events..."
+               aria-label="Search dashboard items">
+      </div>
+
+      <div class="profile">
+        <span class="notification" aria-hidden="true">♧</span>
+        <div class="avatar" id="profileAvatar">T</div>
+        <div class="profile-info">
+          <strong id="profileName">Faculty Member</strong>
+          <small>Teacher Portal</small>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+
+      <div class="breadcrumb">
+        <span>Teacher Portal</span>
+        <span>/</span>
+        <strong>Dashboard</strong>
+      </div>
+
+      <section class="welcome-banner">
+        <div class="welcome-content">
+          <span class="welcome-label">FACULTY WORKSPACE</span>
+          <h1 id="welcomeTitle">Welcome back, Teacher! 👋</h1>
+          <p>
+            Manage your coursework, create campus events,
+            and keep your students engaged.
+          </p>
+
+          <div class="welcome-actions">
+            <a href="create-assignment.html" class="white-btn">
+              + Create Assignment
+            </a>
+            <a href="create-event.html" class="transparent-btn">
+              + Create Event
+            </a>
+          </div>
+        </div>
+
+        <div class="welcome-decoration" aria-hidden="true">✦</div>
+      </section>
+
+      <div class="section-header">
+        <div>
+          <h2>Dashboard Overview</h2>
+          <p>A snapshot of your teaching activities.</p>
+        </div>
+        <span class="preview-badge">Frontend Preview</span>
+      </div>
+
+      <section class="stats-grid" aria-label="Dashboard statistics">
+        <article class="stat-card">
+          <div class="stat-icon purple">▤</div>
+          <div class="stat-info">
+            <p>Total Assignments</p>
+            <strong id="totalAssignments">0</strong>
+            <small>Sample coursework</small>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon orange">◷</div>
+          <div class="stat-info">
+            <p>Pending Review</p>
+            <strong id="pendingReviews">0</strong>
+            <small>Illustrative count</small>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon blue">▦</div>
+          <div class="stat-info">
+            <p>Upcoming Events</p>
+            <strong id="upcomingEvents">0</strong>
+            <small>Sample campus events</small>
+          </div>
+        </article>
+
+        <article class="stat-card">
+          <div class="stat-icon green">♙</div>
+          <div class="stat-info">
+            <p>Students Engaged</p>
+            <strong id="studentsEngaged">0</strong>
+            <small>Illustrative count</small>
+          </div>
+        </article>
+      </section>
+
+      <div class="dashboard-grid">
+        <div class="left-column">
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Recent Assignments</h2>
+                <p>Coursework you've prepared for students.</p>
+              </div>
+              <a href="create-assignment.html" class="small-link">
+                + New Assignment
+              </a>
+            </div>
+
+            <div class="assignment-list" id="assignmentList"></div>
+
+            <div class="empty-state" id="assignmentEmpty" hidden>
+              No assignments match your search.
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Upcoming Campus Events</h2>
+                <p>Activities and opportunities around campus.</p>
+              </div>
+              <a href="events.html" class="small-link">
+                View All →
+              </a>
+            </div>
+
+            <div class="event-list" id="eventList"></div>
+
+            <div class="empty-state" id="eventEmpty" hidden>
+              No events match your search.
+            </div>
+          </section>
+
+        </div>
+
+        <div class="right-column">
+
+          <section class="panel quick-actions-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Quick Actions</h2>
+                <p>Frequently used faculty tools.</p>
+              </div>
+            </div>
+
+            <div class="quick-actions">
+              <a href="create-assignment.html" class="quick-action">
+                <span class="quick-icon purple">✚</span>
+                <span>
+                  <strong>Create Assignment</strong>
+                  <small>Prepare new coursework</small>
+                </span>
+                <span class="action-arrow">→</span>
+              </a>
+
+              <a href="create-event.html" class="quick-action">
+                <span class="quick-icon blue">▦</span>
+                <span>
+                  <strong>Create Event</strong>
+                  <small>Plan a campus activity</small>
+                </span>
+                <span class="action-arrow">→</span>
+              </a>
+
+              <a href="assignments.html" class="quick-action">
+                <span class="quick-icon orange">▤</span>
+                <span>
+                  <strong>Browse Assignments</strong>
+                  <small>View assignment previews</small>
+                </span>
+                <span class="action-arrow">→</span>
+              </a>
+
+              <a href="events.html" class="quick-action">
+                <span class="quick-icon green">✦</span>
+                <span>
+                  <strong>Explore Events</strong>
+                  <small>View campus activities</small>
+                </span>
+                <span class="action-arrow">→</span>
+              </a>
+            </div>
+          </section>
+
+          <section class="panel activity-panel">
+            <div class="panel-heading">
+              <div>
+                <h2>Recent Activity</h2>
+                <p>Example faculty activity timeline.</p>
+              </div>
+            </div>
+
+            <div class="activity-list" id="activityList"></div>
+          </section>
+
+          <section class="tip-card">
+            <div class="tip-icon">✦</div>
+            <h3>Teaching Made Easier</h3>
+            <p>
+              Organize assignments, share instructions,
+              and keep your students informed—all in one place.
+            </p>
+            <a href="create-assignment.html">Create Coursework →</a>
+          </section>
+
+        </div>
+      </div>
+
+      <p class="demo-note">
+        This dashboard currently displays sample data.
+        Assignment and event statistics will use MongoDB after API integration.
+      </p>
+
+    </main>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+</body>
+</html>

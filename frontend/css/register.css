@@ -1,0 +1,261 @@
+
+/* ==========================================
+   CampusConnect - Figma Registration Page
+   Uses the shared styles from login.css
+   ========================================== */
+
+/* Registration page background */
+
+.register-page {
+    background: #dfe5f4;
+    padding: 6vh 4%;
+  }
+  
+  /* Large rounded outer container */
+  
+  .register-page .login-layout {
+    max-width: 1200px;
+    padding: 24px 44px 54px;
+    border-radius: 34px;
+  
+    background:
+      radial-gradient(
+        circle at 5% 20%,
+        #e3e9ff 0%,
+        transparent 45%
+      ),
+      radial-gradient(
+        circle at 95% 85%,
+        #e9e6ff 0%,
+        transparent 45%
+      ),
+      #f4f6ff;
+  
+    box-shadow: 0 15px 35px rgba(49, 45, 105, 0.08);
+  }
+  
+  /* Navigation */
+  
+  .register-page .login-navbar {
+    margin-bottom: 34px;
+  }
+  
+  /* Figma registration design uses an
+     outlined Login button */
+  
+  .register-page .register-link {
+    background: #ffffff;
+    color: #4d35b7;
+    border: 1px solid #c9c2fa;
+    box-shadow: none;
+    font-weight: 600;
+  }
+  
+  .register-page .register-link:hover {
+    background: #f0edff;
+  }
+  
+  /* Main two-column layout */
+  
+  .register-page .login-main {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(310px, 1fr);
+  
+    gap: 34px;
+    align-items: center;
+  }
+  
+  /* Left campus illustration */
+  
+  .register-page .campus-panel {
+    min-height: 495px;
+    border-radius: 25px;
+  }
+  
+  .register-page .campus-image {
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .register-page .campus-panel::after {
+    background: linear-gradient(
+      to bottom,
+      transparent 35%,
+      rgba(30, 25, 70, 0.88) 100%
+    );
+  }
+  
+  /* Top badges */
+  
+  .register-page .campus-status {
+    top: 52px;
+    left: 26px;
+  }
+  
+  .register-page .campus-tagline {
+    top: 30px;
+    right: 24px;
+    max-width: 155px;
+    padding: 12px 16px;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 16px;
+    transform: rotate(-4deg);
+  }
+  
+  /* Bottom illustration content */
+  
+  .register-page .campus-content {
+    left: 26px;
+    right: 26px;
+    bottom: 27px;
+  }
+  
+  .register-page .student-count {
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: #ffffff;
+    backdrop-filter: blur(6px);
+  }
+  
+  .register-page .campus-content h1 {
+    font-size: clamp(26px, 3vw, 38px);
+    margin-top: 14px;
+  }
+  
+  .register-page .campus-content p {
+    max-width: 440px;
+    color: #f0edff;
+  }
+  
+  /* White registration card */
+  
+  .register-page .register-card {
+    width: 100%;
+    max-width: 410px;
+    justify-self: center;
+    padding: 34px 30px 30px;
+    border-radius: 27px;
+    background: #ffffff;
+    box-shadow: none;
+  }
+  
+  .register-page .register-card h2 {
+    font-size: 26px;
+    letter-spacing: -0.8px;
+    color: #242143;
+  }
+  
+  .register-page .login-subtitle {
+    margin: 4px 0 24px;
+  }
+  
+  /* Student / Teacher selection */
+  
+  .register-page .role-selector {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    background: #f0edfb;
+  }
+  
+  .register-page .role-option span {
+    border-radius: 8px;
+    padding: 10px 8px;
+  }
+  
+  .register-page .role-option input:checked + span {
+    background: #4d35b7;
+    color: #ffffff;
+  }
+  
+  /* Registration form fields */
+  
+  .register-page .form-group {
+    margin-bottom: 13px;
+  }
+  
+  .register-page .form-group input {
+    min-height: 41px;
+    border-radius: 12px;
+    border: 1px solid #e0e6f1;
+    background: #ffffff;
+  }
+  
+  .register-page .form-group input:focus {
+    border-color: #4d35b7;
+    box-shadow: 0 0 0 3px rgba(77, 53, 183, 0.12);
+  }
+  
+  /* Purple Register button */
+  
+  .register-page .login-submit {
+    margin-top: 2px;
+    border-radius: 11px;
+    background: #4d35b7;
+  }
+  
+  .register-page .login-submit:hover {
+    background: #3d2998;
+  }
+  
+  /* Login link below form */
+  
+  .register-page .signup-text {
+    margin-top: 24px;
+    font-size: 12px;
+  }
+  
+  /* Tablet layout */
+  
+  @media (max-width: 900px) {
+    .register-page .login-layout {
+      padding: 24px;
+    }
+  
+    .register-page .login-main {
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+  
+    .register-page .campus-panel {
+      min-height: 460px;
+    }
+  }
+  
+  /* Mobile layout */
+  
+  @media (max-width: 700px) {
+    .register-page {
+      padding: 16px 10px;
+    }
+  
+    .register-page .login-layout {
+      padding: 20px 16px 28px;
+      border-radius: 22px;
+    }
+  
+    .register-page .login-main {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  
+    .register-page .campus-panel {
+      min-height: 320px;
+    }
+  
+    .register-page .register-card {
+      max-width: 100%;
+      padding: 26px 20px;
+    }
+  
+    .register-page .campus-status {
+      top: 20px;
+    }
+  
+    .register-page .campus-tagline {
+      top: 18px;
+      font-size: 12px;
+    }
+  }
+  

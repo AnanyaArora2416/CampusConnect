@@ -1,0 +1,82 @@
+.app-shell {
+  min-height: 100vh;
+  margin: 0;
+  background: #eef1fb;
+  color: #242143;
+  font-family: Arial, sans-serif;
+}
+
+.app-shell header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 6%;
+  background: #fff;
+  box-shadow: 0 2px 12px rgba(30, 27, 55, 0.06);
+}
+
+.app-shell .shell-logo {
+  color: #4d35b7;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.app-shell .shell-logout {
+  padding: 9px 18px;
+  border: 0;
+  border-radius: 999px;
+  background: #4d35b7;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.app-shell .shell-logout:hover {
+  background: #3e299b;
+}
+
+.app-shell .shell-logout:focus-visible {
+  outline: 3px solid #9785f3;
+  outline-offset: 2px;
+}
+
+.app-shell main {
+  max-width: 720px;
+  margin: 32px auto;
+  padding: 28px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 14px 30px rgba(90, 63, 145, 0.08);
+}
+
+.app-shell h1 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+.app-shell p {
+  margin: 0 0 12px;
+  color: #45516a;
+  line-height: 1.5;
+}
+
+.app-shell .shell-status {
+  max-width: 720px;
+  margin: 24px auto;
+  padding: 0 28px;
+  color: #4d35b7;
+}
+
+.app-shell .shell-role {
+  display: inline-block;
+  margin-bottom: 16px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #eeebfb;
+  color: #4d35b7;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: capitalize;
+}

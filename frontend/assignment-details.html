@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment Details | CampusConnect</title>
+  <link rel="stylesheet" href="css/assignment-details.css">
+  <script src="js/assignment-details.js" defer></script>
+</head>
+<body>
+  <div class="app-layout">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="dashboard.html">CampusConnect</a>
+
+      <nav class="sidebar-nav" aria-label="Main navigation">
+        <a href="dashboard.html">⌂ <span>Home</span></a>
+        <a href="assignments.html" class="active">▤ <span>Assignments</span></a>
+        <a href="events.html">▦ <span>Events</span></a>
+        <a href="my-events.html">▣ <span>My Events</span></a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <button type="button" id="logoutBtn">↪ Logout</button>
+      </div>
+    </aside>
+
+    <div class="main-area">
+      <header class="topbar">
+        <button type="button" id="menuBtn" class="menu-btn"
+                aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+        <div class="top-search">
+          <span>⌕</span>
+          <input type="search" placeholder="Search courses, assignments, notices..."
+                 aria-label="Search" disabled>
+        </div>
+
+        <div class="profile">
+          <span class="notification">♧</span>
+          <span class="avatar" id="profileAvatar">S</span>
+          <div>
+            <strong id="profileName">Student</strong>
+            <small>MCA</small>
+          </div>
+        </div>
+      </header>
+
+      <main class="content">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="assignments.html">← Assignments</a>
+          <span>/</span>
+          <span id="breadcrumbCourse">CS-301 DBMS</span>
+          <span>/</span>
+          <strong id="breadcrumbAssignment">Project Phase 1</strong>
+        </nav>
+
+        <div class="page-heading">
+          <div>
+            <h1 id="assignmentTitle">DBMS Assignment</h1>
+            <div class="heading-badges">
+              <span class="badge due" id="dueBadge">Due date</span>
+              <span class="badge marks" id="marksBadge">20 Marks Total</span>
+              <span class="badge type">♙ Individual Submission</span>
+            </div>
+          </div>
+          <span class="preview-label">Frontend Preview</span>
+        </div>
+
+        <div class="details-grid">
+          <div class="left-column">
+            <section class="panel requirements-panel">
+              <div class="panel-heading">
+                <h2>☷ Task Requirements</h2>
+                <small id="updatedLabel">Assignment overview</small>
+              </div>
+
+              <p class="section-description" id="assignmentDescription"></p>
+
+              <div class="requirements-grid" id="requirementsGrid"></div>
+            </section>
+
+            <section class="panel resources-panel">
+              <div class="panel-heading">
+                <h2>▱ Attached Course Resources</h2>
+                <small>Preview resources</small>
+              </div>
+              <div class="resources-grid" id="resourcesGrid"></div>
+            </section>
+          </div>
+
+          <section class="panel submission-panel">
+            <div class="panel-heading">
+              <h2>➤ Submit Assignment</h2>
+              <span class="badge draft" id="submissionBadge">Draft Ready</span>
+            </div>
+
+            <p class="submission-description">
+              Upload your completed coursework and supporting files.
+              Accepted formats: PDF, ZIP, DOCX (Max 25 MB).
+            </p>
+
+            <input type="file" id="fileInput"
+                   accept=".pdf,.zip,.docx"
+                   class="visually-hidden">
+
+            <div class="dropzone" id="dropzone" role="button"
+                 tabindex="0" aria-label="Choose assignment file">
+              <div class="upload-icon">☁</div>
+              <strong>Click to upload or drag and drop</strong>
+              <span>PDF, ZIP or DOCX (Maximum 25 MB)</span>
+            </div>
+
+            <div id="filePreview" class="file-preview" hidden>
+              <div class="file-icon">▣</div>
+              <div class="file-info">
+                <strong id="fileName"></strong>
+                <small id="fileSize"></small>
+              </div>
+              <button type="button" id="removeFileBtn"
+                      class="remove-file" aria-label="Remove file">×</button>
+            </div>
+
+            <p id="uploadMessage" class="upload-message" role="status"
+               aria-live="polite"></p>
+
+            <button type="button" class="submit-btn" id="submitBtn">
+              ☁ Submit Assignment
+            </button>
+
+            <p class="preview-note">
+              Demo only: files are not uploaded to a server.
+            </p>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <div class="modal-backdrop" id="successModal" hidden>
+    <div class="modal" role="dialog" aria-modal="true"
+         aria-labelledby="successTitle">
+      <button type="button" id="closeModalBtn" class="modal-close"
+              aria-label="Close">×</button>
+
+      <div class="success-icon">✓</div>
+      <h2 id="successTitle">Assignment Submitted!</h2>
+      <p class="modal-description">
+        Your submission has been recorded in this browser preview.
+        Server upload and faculty evaluation will be enabled later.
+      </p>
+
+      <div class="receipt">
+        <div class="receipt-heading">
+          <strong>▤ Submission Receipt</strong>
+          <span>Preview Only</span>
+        </div>
+
+        <div class="receipt-grid">
+          <div>
+            <small>COURSE</small>
+            <strong id="receiptCourse">CS-301 DBMS</strong>
+          </div>
+          <div>
+            <small>REFERENCE ID</small>
+            <strong id="receiptId">PREVIEW</strong>
+          </div>
+          <div>
+            <small>TIMESTAMP</small>
+            <strong id="receiptTime"></strong>
+          </div>
+        </div>
+
+        <div class="receipt-file">
+          <span>▣</span>
+          <div>
+            <strong id="receiptFileName"></strong>
+            <small>Selected for preview submission</small>
+          </div>
+        </div>
+
+        <p class="receipt-disclaimer">
+          No email, cryptographic verification, or server upload
+          has occurred.
+        </p>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" id="viewStatusBtn" class="secondary-btn">
+          View Assignment Status
+        </button>
+        <a href="assignments.html" class="primary-btn">
+          Back to Coursework →
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CampusConnect | Register</title>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="stylesheet" href="css/register.css">
+
+  <script src="js/auth.js" defer></script>
+  <script src="js/register.js" defer></script>
+</head>
+
+<body class="login-page register-page">
+
+  <div class="login-layout">
+
+    <!-- Navigation -->
+    <header class="login-navbar">
+
+      <a href="index.html" class="login-logo">
+        <span class="logo-icon">✉</span>
+        <span>Campus<span class="brand-accent">Connect</span></span>
+      </a>
+
+      <!-- <nav class="login-nav" aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="events.html">Events</a>
+        <a href="assignments.html">Assignments</a>
+        <a href="index.html#features">About</a>
+      </nav> -->
+
+      <a href="login.html" class="register-link">Login</a>
+
+    </header>
+
+    <main class="login-main">
+
+      <!-- Left illustration -->
+      <section class="campus-panel" aria-label="CampusConnect introduction">
+
+        <div class="campus-image"></div>
+
+        <span class="campus-status">
+          <span class="status-dot"></span>
+          Join 10k+ Students
+        </span>
+
+        <span class="campus-tagline">
+          Better Campus Together
+        </span>
+
+        <div class="campus-content">
+
+          <span class="student-count">
+            Your College Companion
+          </span>
+
+          <h1>Connect. Learn. Grow.</h1>
+
+          <!-- <p>
+            Discover campus events, track assignments,
+            and stay connected with your college community
+            in one intuitive hub.
+          </p> -->
+
+        </div>
+
+      </section>
+
+      <!-- Registration form -->
+      <section class="login-card register-card" aria-labelledby="register-heading">
+
+        <h2 id="register-heading">Create Account</h2>
+
+        <p class="login-subtitle">
+          Join our campus community
+        </p>
+
+        <form id="registerForm">
+
+          <fieldset class="role-selector">
+            <legend class="sr-only">Select account type</legend>
+
+            <label class="role-option">
+              <input
+                type="radio"
+                name="role"
+                value="student"
+                checked
+              >
+              <span>Student</span>
+            </label>
+
+            <label class="role-option">
+              <input
+                type="radio"
+                name="role"
+                value="teacher"
+              >
+              <span>Teacher</span>
+            </label>
+          </fieldset>
+
+          <div class="form-group">
+            <label class="sr-only" for="registerName">Full Name</label>
+            <input
+              type="text"
+              id="registerName"
+              name="name"
+              placeholder="Full Name"
+              autocomplete="name"
+              minlength="2"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="registerEmail">College Email</label>
+            <input
+              type="email"
+              id="registerEmail"
+              name="email"
+              placeholder="College Email"
+              autocomplete="email"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="registerPassword">Password</label>
+            <input
+              type="password"
+              id="registerPassword"
+              name="password"
+              placeholder="Password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label class="sr-only" for="confirmPassword">Confirm Password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              placeholder="Confirm Password"
+              autocomplete="new-password"
+              minlength="8"
+              required
+            >
+          </div>
+
+          <button type="submit" class="login-submit">
+            Register →
+          </button>
+
+          <p
+            id="registerMessage"
+            class="login-message"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+        </form>
+
+        <p class="signup-text">
+          Already have an account?
+          <a href="login.html">Login</a>
+        </p>
+
+      </section>
+
+    </main>
+
+  </div>
+
+</body>
+</html>

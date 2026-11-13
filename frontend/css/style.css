@@ -1,0 +1,188 @@
+/* CampusConnect shared styles.
+   CSS rules will be added in a later stage. */
+
+   :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #172033;
+      --muted: #64748b;
+      --background: #f8fafc;
+      --white: #ffffff;
+    }
+    
+    * {
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+    
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 8%;
+      background: var(--white);
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    
+    nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 22px;
+    }
+    
+    nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    
+    nav a:hover {
+      color: var(--primary);
+    }
+    
+    .nav-button,
+    .btn-primary {
+      background: var(--primary);
+      color: var(--white);
+    }
+    
+    .nav-button {
+      padding: 9px 18px;
+      border-radius: 8px;
+    }
+    
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 65vh;
+      padding: 80px 8%;
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      text-align: center;
+    }
+    
+    .hero-content {
+      max-width: 760px;
+    }
+    
+    .eyebrow {
+      color: var(--primary);
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    .hero h1 {
+      margin: 12px 0;
+      font-size: clamp(36px, 5vw, 60px);
+      line-height: 1.15;
+    }
+    
+    .hero-description {
+      color: var(--muted);
+      font-size: 18px;
+    }
+    
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 30px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .btn-primary:hover,
+    .nav-button:hover {
+      background: var(--primary-dark);
+      color: var(--white);
+    }
+    
+    .btn-secondary {
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+    
+    .features {
+      padding: 70px 8%;
+      text-align: center;
+    }
+    
+    .features h2 {
+      margin-bottom: 35px;
+      font-size: 32px;
+    }
+    
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    
+    .feature-card {
+      padding: 28px;
+      background: var(--white);
+      border-radius: 14px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+    
+    .feature-card h3 {
+      color: var(--primary);
+    }
+    
+    footer {
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+      background: var(--white);
+    }
+    
+    @media (max-width: 700px) {
+      .navbar {
+        flex-direction: column;
+        padding: 18px;
+      }
+    
+      nav {
+        justify-content: center;
+        gap: 14px;
+      }
+    
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+    
+      .hero {
+        min-height: 55vh;
+        padding: 65px 20px;
+      }
+    }
+    
